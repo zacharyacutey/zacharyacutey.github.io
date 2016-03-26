@@ -1,4 +1,4 @@
-function Folder()
+function Dictionary()
 {
   this.contents=[];
   this.keys=function(){
@@ -31,4 +31,9 @@ function Folder()
     }
     this.contents[this.contents.length]=[key,value];
   };
+  this.del=function(key)
+  {
+    this.define(key,undefined);
+  }
 }
+var Folder=Dictionary;
