@@ -7,4 +7,17 @@ function Folder()
   this.values=function(){
     return this.contents.map(function(i){return i[1];});
   };
+  this.access=function(key)
+  {
+    var i = 0;
+    while(i != this.contents.length)
+    {
+      if(this.keys()[i]==key)
+      {
+        return this.values()[i];
+      }
+      i++;
+    }
+    throw Error("Key not in Object!");
+  };
 }
