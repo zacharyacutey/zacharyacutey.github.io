@@ -37,4 +37,17 @@ function Dictionary()
     this.define(key,undefined);
   }
 }
-var Folder=Dictionary;
+var Folder=Dictionary; //will add other features to this later
+function File(text)
+{
+  this.text=text;
+  this.write=function(arg){
+    this.text=arg;
+  };
+  this.append=function(arg){
+    this.text+=arg;
+  };
+  this.cls=function(arg){
+    this.text="";
+  };
+}
