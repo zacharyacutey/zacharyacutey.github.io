@@ -7,7 +7,7 @@ function UnitTest(fn)
 {
   if(is_test) fn();
 }
-function GetPair(pair,item)
+function GetPairItem(pair,item)
 {
   var i = 0;
   while(i!=pair.length)
@@ -20,3 +20,9 @@ function GetPair(pair,item)
   }
   throw new Error("Match not found!");
 }
+UnitTest(
+  function()
+  {
+    assert(GetPair([["f",1],["g",2]],"g")==2);
+  }
+);
