@@ -35,7 +35,17 @@ function Dictionary()
   this.del=function(key)
   {
     this.define(key,undefined);
-  }
+  };
+  this.saveur=function(key)
+  {
+    var r="";
+    var i=0;
+    while(i!=this.contents.length)
+    {
+      r+=this.values().saveur();
+      i++;
+    }
+  };
 }
 var Folder=Dictionary; //will add other features to this later
 function File(text)
@@ -49,5 +59,8 @@ function File(text)
   };
   this.cls=function(arg){
     this.text="";
+  };
+  this.saveur=function(arg){ //bonus points!
+    return "fs.define("+arg+","+this.text+");";
   };
 }
