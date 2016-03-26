@@ -28,6 +28,7 @@ function Dictionary()
         this.contents[i][1]=value;
         return;
       }
+      i++;
     }
     this.contents[this.contents.length]=[key,value];
   };
