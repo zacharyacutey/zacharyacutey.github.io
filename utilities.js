@@ -23,6 +23,6 @@ function GetPairItem(pair,item)
 UnitTest(
   function()
   {
-    assert(GetPair([["f",1],["g",2]],"g")==2);
+    assert(GetPairItem([["f",1],["g",2]],"g")==2);
   }
 );
