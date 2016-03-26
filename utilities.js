@@ -1,28 +1,10 @@
-var is_test=true;
-function assert(arg)
+function Folder()
 {
-  if(!arg) throw new Error("Assert Error!");
+  this.contents=[];
+  this.keys=function(){
+    return this.contents.map(function(i){return i[0];});
+  };
+  this.values=function(){
+    return this.contents.map(function(i){return i[1];});
+  };
 }
-function UnitTest(fn)
-{
-  if(is_test) fn();
-}
-function GetPairItem(pair,item)
-{
-  var i = 0;
-  while(i!=pair.length)
-  {
-    if(pair[i][0]==item)
-    {
-      return pair[i][1];
-    }
-    i++;
-  }
-  throw new Error("Match not found!");
-}
-UnitTest(
-  function()
-  {
-    assert(GetPairItem([["f",1],["g",2]],"g")==2);
-  }
-);
