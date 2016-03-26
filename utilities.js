@@ -1,3 +1,12 @@
+var is_test=true;
+function assert(arg)
+{
+  if(!arg) throw new Error("Assert Error!");
+}
+function UnitTest(fn)
+{
+  if(is_test) fn();
+}
 function GetPair(pair,item)
 {
   var i = 0;
