@@ -67,10 +67,10 @@ function File(text)
 var fs=new Dictionary();
 function Save()
 {
-  this.cookie="expires=Wed, 1 Jan 2020 12:00:00 UTC;eval="+fs.saveur(); //maybe the EST was the problem?
+  document.cookie="expires=Wed, 1 Jan 2020 12:00:00 UTC;eval="+fs.saveur(); //maybe the EST was the problem?
 }
 function Load()
 {
   var l="expires=Wed, 1 Jan 2020 12:00:00 UTC;eval=".length;
-  eval(this.cookie.slice(l));
+  eval(document.cookie.slice(l));
 }
