@@ -42,7 +42,7 @@ function Dictionary()
     var i=0;
     while(i!=this.contents.length)
     {
-      r+=this.values()[i].saveur();
+      r+=this.values()[i].saveur(this.keys()[i]);
       i++;
     }
   };
