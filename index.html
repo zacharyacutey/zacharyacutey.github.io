@@ -4,14 +4,6 @@
       My Operating System
     </title>
     <script src="fs.js"></script>
-  </head>
-  <body>
-    <textarea id="arg1">
-      Argument 1
-    </textarea>
-    <textarea id="arg2">
-      Argument 2
-    </textarea>
     <script>
       function $1()
       {
@@ -26,13 +18,21 @@
         document.getElementById("ui").innerHTML=arg;
       }
     </script>
+  </head>
+  <body>
+    <textarea id="arg1">
+      Argument 1
+    </textarea>
+    <textarea id="arg2">
+      Argument 2
+    </textarea>
+
     <button onclick="write(fs.access($1()).text);">Type</button>
     <button onclick="Save();">Save</button>
     <button onclick="fs.access($1()).write($2());">(Over)Write</button>
     <button onclick="fs.access($1()).append($2());">Append</button>
     <button onclick="fs.del($1());">Delete</button>
     <button onclick="fs.define($1(),new File(''));">Create Blank File</button>
-    <br></br>
-    <div id="ui" style="background-color:#000;color:#0F0;">Test</div>
+    <div id="ui" style="background-color:#000000;color:#00FF00;">Test</div>
   </body>
 </html>
