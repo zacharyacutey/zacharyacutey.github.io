@@ -18,16 +18,29 @@
 	</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+var SIZE = 10;
 var x = 0,
 y = 0;
-var NOTHING_TEXT = "<div width='50' height='50' >"
+var NOTHING_TEXT = "<div class='nothing'></div>";
+var PLAYER_TEXT = "<div class='player'></div>";
 function display()
 {
-	
+	var i = -SIZE;
+	var j = -SIZE;
+	var res = "";
+	while(i!=SIZE+1)
+	{
+		j = -SIZE;
+		while(j!=SIZE+1)
+		{
+			res += (i == x && j == y) ? PLAYER_TEXT : NOTHING_TEXT;
+			j++;
+		}
+		res += "<br>";
+	}
 }
 function special(event)
 {
-	var SIZE = 10;
 	var STRING = event.key.toUpperCase();
 	if(STRING == "ARROWUP") {
 		y++;
@@ -43,7 +56,8 @@ function special(event)
 	x -= x > SIZE;
 	y += y < -SIZE;
 	y -= y > SIZE;
-	document.getElementById("body").innerHTML = "("+x+","+y+")"
+	//document.getElementById("body").innerHTML = "("+x+","+y+")";
+	document.getElementById("body").innerHTML = display();
 }
 </script>
 </head>
