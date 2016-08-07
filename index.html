@@ -32,11 +32,11 @@ function display()
 	var res = "";
 	while(i!=-SIZE-1)
 	{
-		j = SIZE;
+		j = -SIZE;
 		while(j!=-SIZE-1)
 		{
 			res += (i == y && j == x) ? PLAYER_TEXT : NOTHING_TEXT;
-			j--;
+			j++;
 		}
 		res += "<br>";
 		i--;
