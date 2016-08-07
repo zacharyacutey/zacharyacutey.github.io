@@ -27,13 +27,13 @@ var NOTHING_TEXT = "<div class='nothing'></div>";
 var PLAYER_TEXT = "<div class='player'></div>";
 function display()
 {
-	var i = -SIZE;
-	var j = -SIZE;
+	var i = SIZE;
+	var j = SIZE;
 	var res = "";
-	while(i!=SIZE+1)
+	while(i!=-SIZE-1)
 	{
 		j = -SIZE;
-		while(j!=SIZE+1)
+		while(j!=-SIZE-1)
 		{
 			res += (i == y && j == x) ? PLAYER_TEXT : NOTHING_TEXT;
 			j++;
