@@ -35,7 +35,7 @@ function display()
 		j = -SIZE;
 		while(j!=SIZE+1)
 		{
-			res += (i == x && j == y) ? PLAYER_TEXT : NOTHING_TEXT;
+			res += (i == y && j == x) ? PLAYER_TEXT : NOTHING_TEXT;
 			j++;
 		}
 		res += "<br>";
