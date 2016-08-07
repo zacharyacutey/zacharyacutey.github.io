@@ -1,0 +1,76 @@
+<html>
+<head>
+	<style>
+		.nothing {
+			border-style : solid;
+			border-color : black;
+			background-color : white;
+			height : 5px;
+			width : 5px;
+			display : inline-block;
+		}
+		.player {
+			border-style : solid;
+			border-color : black;
+			background-color : red;
+			height : 5px;
+			width : 5px;
+			display : inline-block;
+		}
+	</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var SIZE = 30;
+var x = 0,
+y = 0;
+function NOTHING_TEXT(x,y){return "<div class='nothing' id='p"+(x+10)+"_"+(y+10)+"'></div>"; }
+function PLAYER_TEXT(x,y){return "<div class='player' id='p"+(x+10)+"_"+(y+10)+"'></div>"; }
+function display()
+{
+	var i = SIZE;
+	var j = -SIZE;
+	var res = "";
+	while(i!=-SIZE-1)
+	{
+		j = -SIZE;
+		while(j!=SIZE+1)
+		{
+			res += (i == y && j == x) ? PLAYER_TEXT(j,i) : NOTHING_TEXT(j,i);
+			j++;
+		}
+		res += "<br>";
+		i--;
+	}
+	return res;
+}
+
+function special(event)
+{
+	var STRING = event.key.toUpperCase();
+	document.getElementById("p"+(x+10)+"_"+(y+10)).className = "nothing";
+	if(STRING == "ARROWUP") {
+		y++;
+	} else if(STRING == "ARROWDOWN") {
+		y--;
+	} else if(STRING == "ARROWLEFT") {
+		x--;
+	} else if(STRING == "ARROWRIGHT") {
+		x++;
+	} else {
+	}
+	x += x < -SIZE;
+	x -= x > SIZE;
+	y += y < -SIZE;
+	y -= y > SIZE;
+	//document.getElementById("body").innerHTML = "("+x+","+y+")";
+	document.getElementById("p"+(x+10)+"_"+(y+10)).className = "player";
+}
+</script>
+</head>
+<body onkeydown="special(event)" id="body">
+</body>
+<script>
+document.body.innerHTML = display();
+</script>
+</html>
+
