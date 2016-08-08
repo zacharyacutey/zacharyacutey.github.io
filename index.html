@@ -48,13 +48,13 @@ function special(event)
 {
 	var STRING = event.key.toUpperCase();
 	document.getElementById("p"+(x+10)+"_"+(y+10)).className = "nothing";
-	if(STRING == "ARROWUP") {
+	if(STRING == "ARROWUP" || STRING == "W") {
 		y++;
-	} else if(STRING == "ARROWDOWN") {
+	} else if(STRING == "ARROWDOWN" || STRING == "S") {
 		y--;
-	} else if(STRING == "ARROWLEFT") {
+	} else if(STRING == "ARROWLEFT" || STRING == "A") {
 		x--;
-	} else if(STRING == "ARROWRIGHT") {
+	} else if(STRING == "ARROWRIGHT" || STRING == "D") {
 		x++;
 	} else {
 	}
