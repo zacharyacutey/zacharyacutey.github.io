@@ -57,7 +57,7 @@ function rightArrow()
 }
 function isStanding()
 {
-	return x == 0;
+	return y == 0; //Duh, I had x == 0
 }
 function upArrow()
 {
@@ -65,7 +65,22 @@ function upArrow()
 }
 function otherKey()
 {
-	
+	if(direction == 1 && increments != 0)
+	{
+		increments--;
+		y++;
+		makeOnMap();
+	}
+	else if(isStanding())
+	{
+		console.log("You remeained on a platform");
+	}
+	else
+	{
+		y--;
+		makeOnMap();
+	}
+	display();
 }
 function keydown(event)
 {
