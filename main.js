@@ -45,19 +45,67 @@ function leftArrow()
 {
 	x--;
 	makeOnMap();
+	otherKey();
 	display();
 }
 function rightArrow()
 {
 	x++;
 	makeOnMap();
+	otherKey();
 	display();
+}
+function isStanding()
+{
+	return x == 0;
 }
 function upArrow()
 {
+	if(isStanding()) { direction = 1; increments = JUMP_HEIGHT; }  otherKey();
 }
 function otherKey()
 {
+	if(isStanding())
+	{
+		if(direction == 1)
+		{
+			if(increments == 0)
+			{
+				console.log("");
+			} else {
+				increments--;
+				y++;
+				makeOnMap();
+			}
+		} else {
+			direction = 0;
+		}
+	} else {
+		if(direction == 1)
+		{
+			if(increments == 0)
+			{
+				direction = 0;
+				
+			}
+			else
+			{
+				y++;
+				increments--;
+				makeOnMap();
+			}
+		}
+		else if(direction == 0)
+		{
+			direction = -1;
+		}
+		else
+		{
+			y--;
+			makeOnMap();
+		}
+	}
+	display();
 }
 function keydown(event)
 {
@@ -69,10 +117,6 @@ function keydown(event)
 	} else if(key=="arrowright"||key=="d") {
 		rightArrow();
 	} else {
-		upArrow();
+		otherKey();
 	}
-	//Remeber the property used for the key pressed. And the arrow keys
-	//ARROW KEY LEFT OR A- Moves the player left, and then falls or jumps
-	//ARROW KEY RIGHT OR D- Moves the player right, and then falls or jumps
-	//ARROW KEY UP OR W- Jumps or does nothing
 }
