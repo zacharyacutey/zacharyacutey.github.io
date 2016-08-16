@@ -65,50 +65,11 @@ function upArrow()
 }
 function otherKey()
 {
-	if(isStanding())
-	{
-		if(direction == 1)
-		{
-			if(increments == 0)
-			{
-				console.log("");
-			} else {
-				increments--;
-				y++;
-				makeOnMap();
-			}
-		} else {
-			direction = 0;
-			makeOnMap();
-		}
-	} else {
-		if(direction == 1)
-		{
-			if(increments == 0)
-			{
-				direction = 0;
-				makeOnMap();
-				
-			}
-			else
-			{
-				y++;
-				increments--;
-				makeOnMap();
-			}
-		}
-		else if(direction == 0)
-		{
-			direction = -1;
-			makeOnMap();
-		}
-		else
-		{
-			y--;
-			makeOnMap();
-		}
-	}
+	//<debug>
+	y--;
+	makeOnMap();
 	display();
+	//</debug>
 }
 function keydown(event)
 {
