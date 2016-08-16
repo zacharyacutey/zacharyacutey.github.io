@@ -65,11 +65,7 @@ function upArrow()
 }
 function otherKey()
 {
-	//<debug>
-	y--;
-	makeOnMap();
-	display();
-	//</debug>
+	
 }
 function keydown(event)
 {
