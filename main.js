@@ -1,4 +1,4 @@
-var SIZE = 20; //The size of the array of boxes
+var SIZE = 5; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
 
 
