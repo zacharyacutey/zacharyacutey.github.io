@@ -79,6 +79,7 @@ function otherKey()
 			}
 		} else {
 			direction = 0;
+			makeOnMap();
 		}
 	} else {
 		if(direction == 1)
@@ -86,6 +87,7 @@ function otherKey()
 			if(increments == 0)
 			{
 				direction = 0;
+				makeOnMap();
 				
 			}
 			else
@@ -98,6 +100,7 @@ function otherKey()
 		else if(direction == 0)
 		{
 			direction = -1;
+			makeOnMap();
 		}
 		else
 		{
