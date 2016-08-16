@@ -30,6 +30,7 @@ function display()
 }
 function keydown(event)
 {
+	console.log("Testing message! I feel as if I need a statement");
 	//Remeber the property used for the key pressed. And the arrow keys
 	//ARROW KEY LEFT OR A- Moves the player left, and then falls or jumps
 	//ARROW KEY RIGHT OR D- Moves the player right, and then falls or jumps
