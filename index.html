@@ -1,0 +1,34 @@
+<html>
+<head>
+	<style>
+		.nothing {
+			border-style : none;
+			background-color : white;
+			height : 75px;
+			width : 75px;
+			display : inline-block;
+		}
+		.player {
+			border-style : none;
+			background-color : red;
+			height : 75px;
+			width : 75px;
+			display : inline-block;
+		}
+		.obstacle {
+		  	border-style : none;
+			background-color : black;
+			height : 75px;
+			width : 75px;
+			display : inline-block;
+		}
+	</style>
+<script src="main.js"></script>
+</head>
+<body onkeydown="keydown(event)" id="body">
+</body>
+<script>
+document.body.innerHTML = display();
+</script>
+</html>
+
