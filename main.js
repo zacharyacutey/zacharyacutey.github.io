@@ -34,11 +34,22 @@ function display() //Displays the
 	document.getElementsByClassName("player")[0].className="nothing";
 	document.getElementById("p"+x+"_"+y).className="player";
 }
+function makeOnMap() //Makes the position ON the map
+{
+	if(x == -1) x++;
+	if(x == SIZE) x--;
+	if(y == -1) y++;
+	if(y == SIZE) y--;
+}
 function leftArrow()
 {
+	x--;
+	makeOnMap();
 }
 function rightArrow()
 {
+	x++;
+	makeOnMap();
 }
 function upArrow()
 {
@@ -48,6 +59,16 @@ function otherKey()
 }
 function keydown(event)
 {
+	var key = event.key.toLowerCase();
+	if(key=="arrowup"||key=="w") {
+		upArrow();
+	} else if(key=="arrowleft"||key=="a") {
+		leftArrow();
+	} else if(key=="arrowright"||key=="d") {
+		rightArrow();
+	} else {
+		upArrow();
+	}
 	//Remeber the property used for the key pressed. And the arrow keys
 	//ARROW KEY LEFT OR A- Moves the player left, and then falls or jumps
 	//ARROW KEY RIGHT OR D- Moves the player right, and then falls or jumps
