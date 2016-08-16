@@ -45,11 +45,13 @@ function leftArrow()
 {
 	x--;
 	makeOnMap();
+	display();
 }
 function rightArrow()
 {
 	x++;
 	makeOnMap();
+	display();
 }
 function upArrow()
 {
