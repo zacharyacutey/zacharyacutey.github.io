@@ -4,7 +4,7 @@ var x = 0; //The x position
 var y = 0; //The y position
 function NOTHING_TEXT(x,y){return "<div class='nothing' id='p"+x+"_"+y+"'></div>"; } //The div with nothing in it
 function PLAYER_TEXT(x,y){return "<div class='player' id='p"+x+"_"+y+"'></div>"; } //The divs with the player in it
-function OBSTACLE_TEXT(x,y){return "<div class='obstacle' id='p"+x+"_"+y"'></div>"; } //The divs with the platforms
+function OBSTACLE_TEXT(x,y){return "<div class='obstacle' id='p"+x+"_"+y+"'></div>"; } //The divs with the platforms
 function init_display() //returns the initial text
 {
 	var i = SIZE-1;
@@ -30,7 +30,6 @@ function display()
 }
 function keydown(event)
 {
-	console.log("Testing message! I feel as if I need a statement");
 	//Remeber the property used for the key pressed. And the arrow keys
 	//ARROW KEY LEFT OR A- Moves the player left, and then falls or jumps
 	//ARROW KEY RIGHT OR D- Moves the player right, and then falls or jumps
