@@ -1,6 +1,6 @@
 var SIZE = 5; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
-var FALLNOBUTTON = false;
+var FALLNOBUTTON = false; //Whether or not to automaticaly vertically move. Defaults to false
 
 var x = 0; //The x position
 var y = 0; //The y position
@@ -11,7 +11,7 @@ var increments=0; //The number of movements to go till it stop
 function NOTHING_TEXT(x,y){return "<div class='nothing' id='p"+x+"_"+y+"'></div>"; } //The div with nothing in it
 function PLAYER_TEXT(x,y){return "<div class='player' id='p"+x+"_"+y+"'></div>"; } //The divs with the player in it
 function OBSTACLE_TEXT(x,y){return "<div class='obstacle' id='p"+x+"_"+y+"'></div>"; } //The divs with the platforms
-function init_display() //returns the initial text
+function init_display() //returns the initial text, just a 2D array of divs via <br>
 {
 	var i = SIZE-1; //This is modified old code, don't want to comment it all out.
 	var j = 0;
@@ -36,7 +36,7 @@ function display() //Redisplays the screen, by turning the previous player posit
 }
 function set_obstacle(x,y)
 {
-	document.getElementById("p"+x+"_"+y).className = "obstacle"
+	document.getElementById("p"+x+"_"+y).className = "obstacle"; //Black square, obstacle/platform
 }
 function makeOnMap() //Makes the position ON the map
 {
@@ -47,15 +47,19 @@ function makeOnMap() //Makes the position ON the map
 }
 function getpixelclass(x,y)
 {
-	try{ return document.getElementById("p"+x+"_"+y).className; }
-	catch(e) {return "player";}
+	try{
+		return document.getElementById("p"+x+"_"+y).className; //This will throw an error if there's negative x or y
+	}
+	catch(e) { //So we use a try-catch clause to catch negative positions
+		return "player"; //Since player is not a used class for this function
+	}
 }
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
 	x--; //Move position to the left
-	if(getpixelclass(x,y) == "obstacle")
+	if(getpixelclass(x,y) == "obstacle") //If the pseudo-move is an obstacle
 	{
-		x++;
+		x++; //Stop player from moving into obstacle by reverting to original position
 	}
 	makeOnMap(); //Adjust to fit on the screen
 	otherKey(); //Cause vertical movement
@@ -64,9 +68,9 @@ function leftArrow() //The code for the left arrow or the 'a' key being pressed
 function rightArrow() //Right arrow or the 'd' key
 {
 	x++; //Move position to right
-	if(getpixelclass(x,y) == "obstacle")
+	if(getpixelclass(x,y) == "obstacle") //If the pseudo-move is an obstacle
 	{
-		x--;
+		x--; //Stop player from moving into obstacle by reverting to original position
 	}
 	makeOnMap(); //Adjust to fit on screen
 	otherKey(); //Cause vertical movement
@@ -75,12 +79,12 @@ function rightArrow() //Right arrow or the 'd' key
 function isStanding()
 {
 	if(y == 0) return true; //If the player is at the bottom of the screen
-	if(getpixelclass(x,y-1)=="obstacle") return true;
-	return false;
+	if(getpixelclass(x,y-1)=="obstacle") return true; //If below the player is an oobstacle
+	return false; //Otherwise
 }
 function upArrow() //Up arrow or the 'w' key
 {
-	if(isStanding())
+	if(isStanding()) //If the player is on ground or a platform
 	{
 		direction = 1; //Say it's going to be moving up
 		increments = JUMP_HEIGHT; //Reset the increases left counter
@@ -92,9 +96,14 @@ function otherKey() //Force to move down, or some other key is pressed
 {
 	if(direction == 1 && increments != 0) //If it is still jumping
 	{
-		increments--; //Decrease (increases of y) by
+		increments--; //Decrease (increases of y) by 1
 		y++; //Increase y by 1
-		if(getpixelclass(x,y-(y==SIZE))=="obstacle") { y--; increments = 0; direction = 0;}
+		if(getpixelclass(x,y-(y==SIZE))=="obstacle") //If the current square is an obstacle, reset to previous position
+		{
+			y--; //
+			increments = 0; //Reset counter of movements up to 0.
+			direction = 0; //Say they can't move up
+		}
 		makeOnMap(); //Adjust position to fit on the map
 	}
 	else if(isStanding()) //If it is not jumping and on a platform
@@ -121,4 +130,4 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
-window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500)
+window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500); //Code for automatic falling and jumping.
