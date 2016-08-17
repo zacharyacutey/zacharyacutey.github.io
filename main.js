@@ -13,7 +13,7 @@ function PLAYER_TEXT(x,y){return "<div class='player' id='p"+x+"_"+y+"'></div>";
 function OBSTACLE_TEXT(x,y){return "<div class='obstacle' id='p"+x+"_"+y+"'></div>"; } //The divs with the platforms
 function init_display() //returns the initial text
 {
-	var i = SIZE-1; //This is modified old code, don't want to comment it all out
+	var i = SIZE-1; //This is modified old code, don't want to comment it all out.
 	var j = 0;
 	var res = "";
 	while(i!=-1)
@@ -29,69 +29,75 @@ function init_display() //returns the initial text
 	}
 	return res;
 }
-function display() //Displays the 
+function display() //Redisplays the screen, by turning the previous player position to the 'nothing' class, and the current player position to the 'player' class
 {
 	document.getElementsByClassName("player")[0].className="nothing";
 	document.getElementById("p"+x+"_"+y).className="player";
 }
 function makeOnMap() //Makes the position ON the map
 {
-	if(x == -1) x++;
-	if(x == SIZE) x--;
-	if(y == -1) y++;
-	if(y == SIZE) y--;
+	if(x == -1) x++; //Off the left side of the screen, move right one
+	if(x == SIZE) x--; //Off the right side of the screen, move left one
+	if(y == -1) y++; //Below the screen, shouldn't happen, but moves player up one square
+	if(y == SIZE) y--; //Above the screen, causes player to move down for now
 }
-function leftArrow()
+function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
-	x--;
-	makeOnMap();
-	otherKey();
-	display();
+	x--; //Move position to the left
+	makeOnMap(); //Adjust to fit on the screen
+	otherKey(); //Cause vertical movement
+	display(); //Display
 }
-function rightArrow()
+function rightArrow() //Right arrow or the 'd' key
 {
-	x++;
-	makeOnMap();
-	otherKey();
-	display();
+	x++; //Move position to right
+	makeOnMap(); //Adjust to fit on screen
+	otherKey(); //Cause vertical movement
+	display(); //Display
 }
 function isStanding()
 {
-	return y == 0; //Duh, I had x == 0
+	return y == 0; //If the player is at the bottom of the screen
 }
-function upArrow()
+function upArrow() //Up arrow or the 'w' key
 {
-	if(isStanding()) { direction = 1; increments = JUMP_HEIGHT; }  otherKey();
+	if(isStanding())
+	{
+		direction = 1; //Say it's going to be moving up
+		increments = JUMP_HEIGHT; //Reset the increases left counter
+		
+	}
+	otherKey(); //Cause vertical movement
 }
-function otherKey()
+function otherKey() //Force to move down, or some other key is pressed
 {
-	if(direction == 1 && increments != 0)
+	if(direction == 1 && increments != 0) //If it is still jumping
 	{
-		increments--;
-		y++;
-		makeOnMap();
+		increments--; //Decrease (increases of y) by
+		y++; //Increase y by 1
+		makeOnMap(); //Adjust position to fit on the map
 	}
-	else if(isStanding())
+	else if(isStanding()) //If it is not jumping and on a platform
 	{
-		console.log("You remeained on a platform");
+		//Do nothing
 	}
-	else
+	else //Otherwise
 	{
 		y--;
 		makeOnMap();
 	}
-	display();
+	display(); //Display to the screen
 }
-function keydown(event)
+function keydown(event) //The event handler for keydown events.
 {
-	var key = event.key.toLowerCase();
-	if(key=="arrowup"||key=="w") {
+	var key = event.key.toLowerCase(); //I forgot the casing, and I had something like this in another project.
+	if(key=="arrowup"||key=="w") { //Up arrow key OR the 'w' key
 		upArrow();
-	} else if(key=="arrowleft"||key=="a") {
+	} else if(key=="arrowleft"||key=="a") { //Left arrow key OR the 'a' key
 		leftArrow();
-	} else if(key=="arrowright"||key=="d") {
+	} else if(key=="arrowright"||key=="d") { //Right arrow key OR the 'd' key
 		rightArrow();
-	} else {
+	} else { //Some other key is pressed
 		otherKey();
 	}
 }
