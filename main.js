@@ -85,7 +85,7 @@ function otherKey() //Force to move down, or some other key is pressed
 	{
 		increments--; //Decrease (increases of y) by
 		y++; //Increase y by 1
-		if(getpixelclass(x,y-(y==SIZE)=="obstacle")) y--;
+		if(getpixelclass(x,y-(y==SIZE))=="obstacle") y--;
 		makeOnMap(); //Adjust position to fit on the map
 	}
 	else if(isStanding()) //If it is not jumping and on a platform
