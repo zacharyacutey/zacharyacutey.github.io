@@ -36,7 +36,7 @@ function display() //Redisplays the screen, by turning the previous player posit
 }
 function set_obstacle(x,y)
 {
-	documeent.getElementById("p"+x+"_"+y).className = "obstacle"
+	document.getElementById("p"+x+"_"+y).className = "obstacle"
 }
 function makeOnMap() //Makes the position ON the map
 {
