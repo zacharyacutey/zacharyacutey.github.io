@@ -45,9 +45,18 @@ function makeOnMap() //Makes the position ON the map
 	if(y == -1) y++; //Below the screen, shouldn't happen, but moves player up one square
 	if(y == SIZE) y--; //Above the screen, causes player to move down for now
 }
+function getpixelclass(x,y)
+{
+	try{ return document.getElementById("p"+x+"_"+y).className; }
+	catch {return "player";}
+}
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
 	x--; //Move position to the left
+	if(getpixelclass(x,y) == "obstacle")
+	{
+		x++;
+	}
 	makeOnMap(); //Adjust to fit on the screen
 	otherKey(); //Cause vertical movement
 	display(); //Display
@@ -55,13 +64,13 @@ function leftArrow() //The code for the left arrow or the 'a' key being pressed
 function rightArrow() //Right arrow or the 'd' key
 {
 	x++; //Move position to right
+	if(getpixelclass(x,y) == "obstacle")
+	{
+		x--;
+	}
 	makeOnMap(); //Adjust to fit on screen
 	otherKey(); //Cause vertical movement
 	display(); //Display
-}
-function getpixelclass(x,y)
-{
-	return document.getElementById("p"+x+"_"+y).className;
 }
 function isStanding()
 {
