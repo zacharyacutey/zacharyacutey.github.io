@@ -2,16 +2,14 @@
 <head>
 	<style>
 		.nothing {
-			border-style : solid;
-			border-color : black;
+			border-style : none;
 			background-color : white;
 			height : 75px;
 			width : 75px;
 			display : inline-block;
 		}
 		.player {
-			border-style : solid;
-			border-color : black;
+			border-style : none;
 			background-color : red;
 			height : 75px;
 			width : 75px;
@@ -27,10 +25,16 @@
 	</style>
 <script src="main.js"></script>
 </head>
-<body id="body" onkeydown = "keydown(event)">
+<body onkeydown = "keydown(event)">
+<div id="b" style="border-style:solid;border-color:black;">
+	
+</div>
+<button onclick="FALLNOBUTTON = !FALLNOBUTTON;">
+	Fall automatically
+</button>
 </body>
 <script>
-document.body.innerHTML = init_display();
+document.getElementById("b").innerHTML = init_display();
 </script>
 </html>
 
