@@ -2,14 +2,16 @@
 <head>
 	<style>
 		.nothing {
-			border-style : none;
+			border-style : solid;
+			border-color : black;
 			background-color : white;
 			height : 75px;
 			width : 75px;
 			display : inline-block;
 		}
 		.player {
-			border-style : none;
+			border-style : solid;
+			border-color : black;
 			background-color : red;
 			height : 75px;
 			width : 75px;
@@ -25,18 +27,11 @@
 	</style>
 <script src="main.js"></script>
 </head>
-<body onkeydown = "keydown(event)">
-<div id="b" style="border-style:solid;border-color:black;">
-	
-</div>
-<button onclick="FALLNOBUTTON = !FALLNOBUTTON;">
-	Fall automatically
-</button>
+<body id="body" onkeydown = "keydown(event)">
 </body>
 <script>
-document.getElementById("b").style.height = 75*SIZE+"px";
-document.getElementById("b").style.width = 75*SIZE+"px";
-document.getElementById("b").innerHTML = init_display();
+document.body.innerHTML = init_display();
+set_obstacle(0,1);
 </script>
 </html>
 
