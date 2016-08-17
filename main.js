@@ -1,11 +1,11 @@
 var SIZE = 5; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
-var FALLNOBUTTON = false;
+
 
 var x = 0; //The x position
 var y = 0; //The y position
 
-var direction=0; //1 is up, 0 is no vertical movement, -1 is downards vertical
+var direction=0; //1 is up, 0 is no vertical movement or downwards.
 var increments=0; //The number of movements to go till it stop
 
 function NOTHING_TEXT(x,y){return "<div class='nothing' id='p"+x+"_"+y+"'></div>"; } //The div with nothing in it
@@ -31,8 +31,12 @@ function init_display() //returns the initial text
 }
 function display() //Redisplays the screen, by turning the previous player position to the 'nothing' class, and the current player position to the 'player' class
 {
-	document.getElementsByClassName("player")[0].className="nothing";
-	document.getElementById("p"+x+"_"+y).className="player";
+	document.getElementsByClassName("player")[0].className="nothing"; //White square, no player
+	document.getElementById("p"+x+"_"+y).className="player"; //Red square, the player
+}
+function set_obstacle(x,y)
+{
+	documeent.getElementById("p"+x+"_"+y).className = "obstacle"
 }
 function makeOnMap() //Makes the position ON the map
 {
@@ -81,10 +85,10 @@ function otherKey() //Force to move down, or some other key is pressed
 	{
 		//Do nothing
 	}
-	else //Otherwise
+	else //Otherwise, not on a platform and should fall down
 	{
-		y--;
-		makeOnMap();
+		y--; //Cause to move down
+		makeOnMap(); //Adjust position
 	}
 	display(); //Display to the screen
 }
@@ -101,4 +105,3 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
-window.setInterval(function(){if(FALLNOBUTTON){otherKey();}},500);
