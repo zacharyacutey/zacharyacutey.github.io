@@ -102,4 +102,4 @@ function keydown(event) //The event handler for keydown events.
 	}
 }
 var FALLNOBUTTON = true;
-if(FALLNOBUTTON) window.setInterval(otherKey,1000);
+if(FALLNOBUTTON) window.setInterval(otherKey,500);
