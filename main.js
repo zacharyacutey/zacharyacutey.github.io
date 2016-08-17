@@ -66,7 +66,7 @@ function getpixelclass(x,y)
 function isStanding()
 {
 	if(y == 0) return true; //If the player is at the bottom of the screen
-	if(getpixelclass(x,y-1)=="obstacle") return true;
+	if(getpixelclass(x,y-1)=="obstacle")) return true;
 	return false;
 }
 function upArrow() //Up arrow or the 'w' key
