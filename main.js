@@ -48,7 +48,7 @@ function makeOnMap() //Makes the position ON the map
 function getpixelclass(x,y)
 {
 	try{ return document.getElementById("p"+x+"_"+y).className; }
-	catch {return "player";}
+	catch(e) {return "player";}
 }
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
