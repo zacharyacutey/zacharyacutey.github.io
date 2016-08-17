@@ -101,3 +101,5 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
+var FALLNOBUTTON = true;
+if(FALLNOBUTTON) window.setInterval(otherKey,1000);
