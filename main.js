@@ -1,6 +1,6 @@
 var SIZE = 5; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
-
+var FALLNOBUTTON = false;
 
 var x = 0; //The x position
 var y = 0; //The y position
@@ -101,5 +101,4 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
-var FALLNOBUTTON = true;
-if(FALLNOBUTTON) window.setInterval(otherKey,500);
+window.setInterval(function(){if(FALLNOBUTTON){otherKey();}},500);
