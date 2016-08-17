@@ -45,7 +45,8 @@ function makeOnMap() //Makes the position ON the map
 	if(y == -1) y++; //Below the screen, shouldn't happen, but moves player up one square
 	if(y == SIZE) y--; //Above the screen, causes player to move down for now
 }
-function getpixelclass(x,y)
+var getpixelclass = getPixelClass; //Just in case I forget I camelCased it.
+function getPixelClass(x,y) //returns the class name of the specified pixel
 {
 	try{
 		return document.getElementById("p"+x+"_"+y).className; //This will throw an error if there's negative x or y
@@ -57,7 +58,7 @@ function getpixelclass(x,y)
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
 	x--; //Move position to the left
-	if(getpixelclass(x,y) == "obstacle") //If the pseudo-move is an obstacle
+	if(getPixelClass(x,y) == "obstacle") //If the pseudo-move is an obstacle
 	{
 		x++; //Stop player from moving into obstacle by reverting to original position
 	}
@@ -68,7 +69,7 @@ function leftArrow() //The code for the left arrow or the 'a' key being pressed
 function rightArrow() //Right arrow or the 'd' key
 {
 	x++; //Move position to right
-	if(getpixelclass(x,y) == "obstacle") //If the pseudo-move is an obstacle
+	if(getPixelClass(x,y) == "obstacle") //If the pseudo-move is an obstacle
 	{
 		x--; //Stop player from moving into obstacle by reverting to original position
 	}
@@ -76,10 +77,10 @@ function rightArrow() //Right arrow or the 'd' key
 	otherKey(); //Cause vertical movement
 	display(); //Display
 }
-function isStanding()
+function isStanding() //Whether the player can fall
 {
 	if(y == 0) return true; //If the player is at the bottom of the screen
-	if(getpixelclass(x,y-1)=="obstacle") return true; //If below the player is an oobstacle
+	if(getPixelClass(x,y-1)=="obstacle") return true; //If below the player is an oobstacle
 	return false; //Otherwise
 }
 function upArrow() //Up arrow or the 'w' key
@@ -98,7 +99,7 @@ function otherKey() //Force to move down, or some other key is pressed
 	{
 		increments--; //Decrease (increases of y) by 1
 		y++; //Increase y by 1
-		if(getpixelclass(x,y-(y==SIZE))=="obstacle") //If the current square is an obstacle, reset to previous position
+		if(getPixelClass(x,y-(y==SIZE))=="obstacle") //If the current square is an obstacle, reset to previous position
 		{
 			y--; //
 			increments = 0; //Reset counter of movements up to 0.
