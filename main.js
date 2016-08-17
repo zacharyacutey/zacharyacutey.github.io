@@ -59,9 +59,15 @@ function rightArrow() //Right arrow or the 'd' key
 	otherKey(); //Cause vertical movement
 	display(); //Display
 }
+function getpixelclass(x,y)
+{
+	return document.getElementById("p"+x+"_"+y).className;
+}
 function isStanding()
 {
-	return y == 0; //If the player is at the bottom of the screen
+	if(y == 0) return true; //If the player is at the bottom of the screen
+	if(getpixelclass(x,y-1)=="obstacle") return true;
+	return false;
 }
 function upArrow() //Up arrow or the 'w' key
 {
