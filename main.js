@@ -66,7 +66,7 @@ function getpixelclass(x,y)
 function isStanding()
 {
 	if(y == 0) return true; //If the player is at the bottom of the screen
-	if(getpixelclass(x,y-1)=="obstacle")) return true;
+	if(getpixelclass(x,y-1)=="obstacle") return true;
 	return false;
 }
 function upArrow() //Up arrow or the 'w' key
@@ -85,7 +85,7 @@ function otherKey() //Force to move down, or some other key is pressed
 	{
 		increments--; //Decrease (increases of y) by
 		y++; //Increase y by 1
-		if(getpixelclass(x,y-(y==SIZE)=="obstacle") y--;
+		if(getpixelclass(x,y-(y==SIZE)=="obstacle")) y--;
 		makeOnMap(); //Adjust position to fit on the map
 	}
 	else if(isStanding()) //If it is not jumping and on a platform
