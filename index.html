@@ -30,7 +30,7 @@
 		.center {
 			 text-align: center;
 		}
-		.center > div, .center > button /* insert any other block-level elements here */ {
+		.center > div, .center > button {
     			margin-left: auto;
     			margin-right: auto;
 		}
@@ -56,13 +56,14 @@
 				//Math.random() -> [0,1)
 				//[0,1) * (y+1-x) -> [0,y+1-x)
 				//[0,y+1-x) + x -> [x,y+1)
-				//Math.floor([x,y+1)) -> [x,y].
+				//Math.floor( [x,y+1) ) -> [x,y].
 			}
 			function random_obstacle() //Generate a random obstacle, but I won't comment this out, it's very hacked together code.
 			{
-				for (i = 0; i < arguments.length; i++)
+				for (i = 0; i < arguments.length; i++) //
 				{
-					if(i != 0){
+					if(i != 0)
+					{
 						var possible = [random_x-2,random_x-1+2*(random_x==0),random_x+1-2*(random_x==SIZE-1),random_x+2];
 						if(possible[0]<0 && random_x == 0)
 						{
@@ -105,7 +106,6 @@
 			else if(level == 3) //Level 3
 			{
 				document.getElementsByTagName("body")[0].style.backgroundImage="url(http://abcnews.go.com/images/International/EPA_volcano_ml_160307.jpg)";
-
 			}
 			else if(level == 4) //Level 4, display the win message.
 			{
