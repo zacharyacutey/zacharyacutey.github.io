@@ -1,6 +1,6 @@
 var SIZE = 7; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
-var FALLNOBUTTON = false;
+var FALLNOBUTTON = false; //Whether 'hard' mode is enabled
 
 var x = 0; //The x position
 var y = 0; //The y position
@@ -38,9 +38,9 @@ function display() //Redisplays the screen, by turning the previous player posit
 		console.log("YOU WON! Thanks for playing!");
 	}
 }
-function set_obstacle(x,y)
+function set_obstacle(x,y) //Sets the pixel to be a platform
 {
-	document.getElementById("p"+x+"_"+y).className = "obstacle";
+	document.getElementById("p"+x+"_"+y).className = "obstacle"; //that's the class name
 }
 function makeOnMap() //Makes the position ON the map
 {
@@ -49,9 +49,9 @@ function makeOnMap() //Makes the position ON the map
 	if(y == -1) y++; //Below the screen, shouldn't happen, but moves player up one square
 	if(y == SIZE) y--; //Above the screen, causes player to move down for now
 }
-function getpixelclass(x,y)
+function getpixelclass(x,y) //Returns the class name of the pixel sepcified
 {
-	try{ return document.getElementById("p"+x+"_"+y).className; }
+	try{ return document.getElementById("p"+x+"_"+y).className; } //If the pixel is invalid, will throw error, SO catch it.
 	catch(e) {return "player";}
 }
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
@@ -68,7 +68,7 @@ function leftArrow() //The code for the left arrow or the 'a' key being pressed
 function rightArrow() //Right arrow or the 'd' key
 {
 	x++; //Move position to right
-	if(getpixelclass(x,y) == "obstacle")
+	if(getpixelclass(x,y) == "obstacle") //'bump' the player off of the platform
 	{
 		x--;
 	}
@@ -79,8 +79,8 @@ function rightArrow() //Right arrow or the 'd' key
 function isStanding()
 {
 	if(y == 0) return true; //If the player is at the bottom of the screen
-	if(getpixelclass(x,y-1)=="obstacle") return true;
-	return false;
+	if(getpixelclass(x,y-1)=="obstacle") return true; //They're on the platform
+	return false; //Neither condition is met
 }
 function upArrow() //Up arrow or the 'w' key
 {
