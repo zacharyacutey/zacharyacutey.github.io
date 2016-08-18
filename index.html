@@ -106,7 +106,7 @@
 				window.clearInterval(theInterval);
 				document.getElementsByTagName("body")[0].style.backgroundImage="url(https://avatars3.githubusercontent.com/u/16977565?v=3&s=400)"; //My avatar
 				document.getElementById("body").onkeydown = function(){};
-				document.getElementById("body").innerHTML = "<p>YOU WIN</p>";
+				document.getElementById("body").innerHTML = FALLNOBUTTON ? "<p>YOU BEAT HARD MODE!</p>" : "<p>YOU WON</p>";
 			}
 		}
 </script>
