@@ -35,12 +35,12 @@ function display() //Redisplays the screen, by turning the previous player posit
 	document.getElementsByClassName("player")[0].className="nothing"; //White square, no player
 	document.getElementById("p"+x+"_"+y).className="player"; //Red square, the player
 	} catch(e) {
-		console.log("YOU WON! Thanks for playing!")
+		console.log("YOU WON! Thanks for playing!");
 	}
 }
 function set_obstacle(x,y)
 {
-	document.getElementById("p"+x+"_"+y).className = "obstacle"
+	document.getElementById("p"+x+"_"+y).className = "obstacle";
 }
 function makeOnMap() //Makes the position ON the map
 {
