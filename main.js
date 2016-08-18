@@ -32,10 +32,13 @@ function init_display() //returns the initial text
 }
 function display() //Redisplays the screen, by turning the previous player position to the 'nothing' class, and the current player position to the 'player' class
 {
-	try {
-	document.getElementsByClassName("player")[0].className="nothing"; //White square, no player
-	document.getElementById("p"+x+"_"+y).className="player"; //Red square, the player
-	} catch(e) {
+	try
+	{
+		document.getElementsByClassName("player")[0].className="nothing"; //White square, no player
+		document.getElementById("p"+x+"_"+y).className="player"; //Red square, the player
+	}
+	catch(e)
+	{
 		console.log("YOU WON! Thanks for playing!");
 	}
 }
@@ -52,8 +55,14 @@ function makeOnMap() //Makes the position ON the map
 }
 function getpixelclass(x,y) //Returns the class name of the pixel sepcified
 {
-	try{ return document.getElementById("p"+x+"_"+y).className; } //If the pixel is invalid, will throw error, SO catch it.
-	catch(e) {return "player";}
+	try
+	{
+		return document.getElementById("p"+x+"_"+y).className; //If the pixel is invalid, will throw error, SO catch it.
+	}
+	catch(e)
+	{
+		return "player";
+	}
 }
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
@@ -117,18 +126,25 @@ function keydown(event) //The event handler for keydown events.
 {
 	
 	var key = event.key.toLowerCase(); //I forgot the casing, and I had something like this in another project.
-	if(key=="arrowup"||key=="w") { //Up arrow key OR the 'w' key
+	if(key=="arrowup"||key=="w") //Up arrow key OR the 'w' key
+	{ 
 		upArrow();
-	} else if(key=="arrowleft"||key=="a") { //Left arrow key OR the 'a' key
+	}
+	else if(key=="arrowleft"||key=="a") //Left arrow key OR the 'a' key
+	{
 		leftArrow();
-	} else if(key=="arrowright"||key=="d") { //Right arrow key OR the 'd' key
+	}
+	else if(key=="arrowright"||key=="d") //Right arrow key OR the 'd' key
+	{ 
 		rightArrow();
-	} else { //Some other key is pressed
+	}
+	else //Some other key is pressed
+	{ 
 		otherKey();
 	}
-	if(!FALLNOBUTTON && HARDMODE)
+	if(!FALLNOBUTTON && HARDMODE) //If hard mode is turrned off, turn the corrresponding variable off
 	{
 		HARDMODE = false;
 	}
 }
-var theInterval = window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500);
+var theInterval = window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500); //Code for hard mode.
