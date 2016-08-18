@@ -121,4 +121,4 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
-window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500);
+var theInterval = window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500);
