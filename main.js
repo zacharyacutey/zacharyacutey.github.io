@@ -1,6 +1,7 @@
 var SIZE = 7; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
-var FALLNOBUTTON = false; //Whether 'hard' mode is enabled
+var FALLNOBUTTON = true; //Whether 'hard' mode is enabled, IT NOW DEFAULTS TO TRUE.
+var HARDMODE = true;
 
 var x = 0; //The x position
 var y = 0; //The y position
@@ -114,6 +115,7 @@ function otherKey() //Force to move down, or some other key is pressed
 }
 function keydown(event) //The event handler for keydown events.
 {
+	
 	var key = event.key.toLowerCase(); //I forgot the casing, and I had something like this in another project.
 	if(key=="arrowup"||key=="w") { //Up arrow key OR the 'w' key
 		upArrow();
@@ -123,6 +125,10 @@ function keydown(event) //The event handler for keydown events.
 		rightArrow();
 	} else { //Some other key is pressed
 		otherKey();
+	}
+	if(!FALLNOBUTTON && HARDMODE)
+	{
+		HARDMODE = false;
 	}
 }
 var theInterval = window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500);
