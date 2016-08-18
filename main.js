@@ -31,8 +31,12 @@ function init_display() //returns the initial text
 }
 function display() //Redisplays the screen, by turning the previous player position to the 'nothing' class, and the current player position to the 'player' class
 {
+	try {
 	document.getElementsByClassName("player")[0].className="nothing"; //White square, no player
 	document.getElementById("p"+x+"_"+y).className="player"; //Red square, the player
+	} catch(e) {
+		console.log("YOU WON! Thanks for playing!")
+	}
 }
 function set_obstacle(x,y)
 {
