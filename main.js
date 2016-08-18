@@ -130,4 +130,8 @@ function keydown(event) //The event handler for keydown events.
 		otherKey();
 	}
 }
+function randbetween(x,y) //Random integer in the range [x,y]
+{
+	Math.floor(Math.random()*(y+1-x)+x);
+}
 window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500); //Code for automatic falling and jumping.
