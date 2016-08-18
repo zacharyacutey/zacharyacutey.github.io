@@ -24,14 +24,7 @@
 		}
 	</style>
 <script src="main.js"></script>
-</head>
-<body id="body" onkeydown = "keydown(event)">
-<div id="b" style="border-style:solid;border-color:black;">
-</div>
-</body>
-	<script>
-		document.getElementById("b").style.width = 75*SIZE+"px";
-		document.getElementById("b").style.height= 75*SIZE+"px";
+<script>
 		var level = 0;
 		function isTop()
 		{
@@ -75,6 +68,15 @@
 			random_obstacle(1,3,5);
 			level++;
 		}
+</script>
+</head>
+<body id="body" onkeydown = "keydown(event);if(isTop()){reload_game();}">
+<div id="b" style="border-style:solid;border-color:black;">
+</div>
+</body>
+	<script>
+		document.getElementById("b").style.width = 75*SIZE+"px";
+		document.getElementById("b").style.height= 75*SIZE+"px";
 		reload_game();
 	</script>
 </html>
