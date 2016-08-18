@@ -33,6 +33,10 @@
 		document.getElementById("b").style.width = 75*SIZE+"px";
 		document.getElementById("b").style.height= 75*SIZE+"px";
 		var level = 0;
+		function isTop()
+		{
+			return isStanding() && y == SIZE - 1;
+		}
 		function reload_game()
 		{
 			document.getElementById("b").innerHTML = init_display();
