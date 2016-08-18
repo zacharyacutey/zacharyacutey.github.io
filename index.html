@@ -73,6 +73,7 @@
 			direction = 0;
 			if(level == 4)
 			{
+				window.clearInterval(theInterval);
 				document.getElementById("body").onkeydown = function(){};
 				document.getElementById("body").innerHTML = "YOU WIN";
 			}
