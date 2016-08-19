@@ -5,10 +5,10 @@
 		.nothing {
 			border-style : none;
 			background-color : none;
-			/* White was a dumb decision on my part. It needs to be see-through*/
 			height : 75px;
 			width : 75px;
 			display : inline-block;
+			/* displays without lines between squares */
 		}
 		.player {
 			border-style : none;
@@ -30,6 +30,7 @@
 		.center {
 			 text-align: center;
 		}
+		/* Copied stackoverflow code for center tag replacement */
 		.center > div, .center > button {
     			margin-left: auto;
     			margin-right: auto;
@@ -52,20 +53,20 @@
 			document.getElementById("b").innerHTML = init_display(); //Initialize display to screen with just the player.
 			function randbetween(x,y) //Generate a random number in the range [x,y]
 			{
-				return Math.floor(Math.random()*(y+1-x)+x); //Complex code, I used this math
+				return Math.floor(Math.random()*(y+1-x)+x); //Complex code, I used this math:
 				//Math.random() -> [0,1)
 				//[0,1) * (y+1-x) -> [0,y+1-x)
 				//[0,y+1-x) + x -> [x,y+1)
 				//Math.floor( [x,y+1) ) -> [x,y].
 			}
-			function random_obstacle() //Generate a random obstacle, but I won't comment this out, it's very hacked together code.
+			function random_obstacle() //Generate a random obstacle.
 			{
-				for (i = 0; i < arguments.length; i++) //
+				for (i = 0; i < arguments.length; i++) //Iterate for the length of the number of arguments.
 				{
-					if(i != 0)
+					if(i != 0) //If it is NOT the first iteration
 					{
-						var possible = [random_x-2,random_x-1+2*(random_x==0),random_x+1-2*(random_x==SIZE-1),random_x+2];
-						if(possible[0]<0 && random_x == 0)
+						var possible = [random_x-2,random_x-1+2*(random_x==0),random_x+1-2*(random_x==SIZE-1),random_x+2]; //Some possibilites
+						if(possible[0]<0 && random_x == 0) //These conditionals are for making sure that the obstacle is on screen, and not directly above the player.
 						{
 							possible[0] = 1;
 						}
@@ -83,8 +84,8 @@
 						}
 						random_x = possible[randbetween(0,3)]
 					}
-					if(i == 0) random_x = randbetween(0,SIZE-1);
-				    set_obstacle(random_x, arguments[i]);
+					if(i == 0) random_x = randbetween(0,SIZE-1); //If it is the first iteration
+				    set_obstacle(random_x, arguments[i]); //Actaully set the obstacle in game.
 				}
 	
 			}
@@ -116,7 +117,7 @@
 			}
 			else
 			{
-				alert("YOU HACKER! HACKER! HACKER! HACKER!"); //This should never happen, so they must have modified the code
+				alert("YOU HACKER! HACKER! HACKER! HACKER!"); //This should never happen, so they must have modified the code.
 			}
 		}
 </script>
