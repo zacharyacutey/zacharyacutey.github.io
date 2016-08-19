@@ -1,10 +1,10 @@
 var SIZE = 7; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
 var FALLNOBUTTON = true; //Whether 'hard' mode is enabled, IT NOW DEFAULTS TO TRUE.
-var HARDMODE = true;
+var HARDMODE = true; //Whether 'hard' mode is ever disabled
 
-var x = 0; //The x position
-var y = 0; //The y position
+var x = 0; //The x position of the player
+var y = 0; //The y position of the player
 
 var direction=0; //1 is up, 0 is no vertical movement or downwards.
 var increments=0; //The number of movements to go till it stop
@@ -14,10 +14,10 @@ function PLAYER_TEXT(x,y){return "<div class='player' id='p"+x+"_"+y+"'></div>";
 function OBSTACLE_TEXT(x,y){return "<div class='obstacle' id='p"+x+"_"+y+"'></div>"; } //The divs with the platforms
 function init_display() //returns the initial text
 {
-	var i = SIZE-1; //This is modified old code, don't want to comment it all out.
+	var i = SIZE-1;
 	var j = 0;
 	var res = "";
-	while(i!=-1)
+	while(i!=-1) //Iterates over the code so it can be indexed with the bottom left being (0,0)
 	{
 		j = 0;
 		while(j!=SIZE)
@@ -39,7 +39,7 @@ function display() //Redisplays the screen, by turning the previous player posit
 	}
 	catch(e)
 	{
-		console.log("YOU WON! Thanks for playing!");
+		console.log("YOU WON! Thanks for playing!"); //If an error is thrown, the player must have won
 	}
 }
 function set_obstacle(x,y) //Sets the pixel to be a platform
@@ -61,15 +61,15 @@ function getpixelclass(x,y) //Returns the class name of the pixel sepcified
 	}
 	catch(e)
 	{
-		return "player";
+		return "player"; //Some useless name that is never used in anything. Just in case the player is off screen
 	}
 }
 function leftArrow() //The code for the left arrow or the 'a' key being pressed
 {
 	x--; //Move position to the left
-	if(getpixelclass(x,y) == "obstacle")
+	if(getpixelclass(x,y) == "obstacle") //If they ran in to an obstacle
 	{
-		x++;
+		x++; //'bump' them off
 	}
 	makeOnMap(); //Adjust to fit on the screen
 	otherKey(); //Cause vertical movement
@@ -108,7 +108,12 @@ function otherKey() //Force to move down, or some other key is pressed
 	{
 		increments--; //Decrease (increases of y) by
 		y++; //Increase y by 1
-		if(getpixelclass(x,y-(y==SIZE))=="obstacle") { y--; increments = 0; direction = 0;}
+		if(getpixelclass(x,y-(y==SIZE))=="obstacle") //If they ran into the obstacle
+		{
+			y--; //'bump' downwards
+			increments = 0; //Reset jumps left
+			direction = 0; //Reset direction
+		}
 		makeOnMap(); //Adjust position to fit on the map
 	}
 	else if(isStanding()) //If it is not jumping and on a platform
@@ -147,4 +152,10 @@ function keydown(event) //The event handler for keydown events.
 		HARDMODE = false;
 	}
 }
-var theInterval = window.setInterval(function(){if(FALLNOBUTTON)otherKey();},500); //Code for hard mode.
+var theInterval = window.setInterval(function()
+{
+	if(FALLNOBUTTON) //If 'hard' mode is enabled
+	{
+		otherKey(); //Force a fake key press
+	}
+},500); //Code for hard mode.
