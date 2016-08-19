@@ -122,7 +122,7 @@
 		}
 </script>
 </head>
-<body id="body" onkeydown = "keydown(event);if(isTop()){reload_game();display();}">
+<body id="body" onkeydown = "event.preventDefault();keydown(event);if(isTop()){reload_game();display();}">
 <div class="center">
 <div id="b" style="border-style:solid;border-color:black;">
 </div>
