@@ -5,6 +5,7 @@ var HARDMODE = true; //Whether 'hard' mode is ever disabled
 
 var x = 0; //The x position of the player
 var y = 0; //The y position of the player
+var duration = 1000;
 
 var direction=0; //1 is up, 0 is no vertical movement or downwards.
 var increments=0; //The number of movements to go till it stop
@@ -158,4 +159,4 @@ var theInterval = window.setInterval(function()
 	{
 		otherKey(); //Force a fake key press
 	}
-},50); //Code for hard mode.
+},1000); //Code for hard mode.
