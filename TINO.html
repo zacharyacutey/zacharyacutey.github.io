@@ -27,6 +27,7 @@
 		}
 		body {
 			background-size : 100% 100%;
+			background-image : url(http://www.maryville-schools.org/cms/lib07/TN01916237/Centricity/Domain/671/SHarness.jpg);
 		}
 		.center {
 			 text-align: center;
@@ -97,29 +98,16 @@
 			y = 0; //Set the y position to the right
 			increments = 0; //Reset jump
 			direction = 0; //Reset direction
-			if(level == 1) //Level 1
+			duration /= 2;
+			window.clearInterval(theInterval);
+			theInterval = window.setInterval(function()
 			{
-				document.getElementsByTagName("body")[0].style.backgroundImage="url(http://www.wallpaperdirect.com/wdimages/043159orig.jpg)";
-			}
-			else if(level == 2) //Level 2
-			{
-				document.getElementsByTagName("body")[0].style.backgroundImage="url(https://avatars0.githubusercontent.com/u/15649723?v=3&s=400)"; //Garrett's avatar
-			}
-			else if(level == 3) //Level 3
-			{
-				document.getElementsByTagName("body")[0].style.backgroundImage="url(http://abcnews.go.com/images/International/EPA_volcano_ml_160307.jpg)";
-			}
-			else if(level == 4) //Level 4, display the win message.
-			{
-				window.clearInterval(theInterval);
-				document.getElementsByTagName("body")[0].style.backgroundImage="url(https://avatars3.githubusercontent.com/u/16977565?v=3&s=400)"; //My avatar
-				document.getElementById("body").onkeydown = function(){};
-				document.getElementById("body").innerHTML = HARDMODE ? "<p>YOU BEAT HARD MODE!</p>" : "<p>YOU WON</p>";
-			}
-			else
-			{
-				alert("YOU HACKER! HACKER! HACKER! HACKER!"); //This should never happen, so they must have modified the code.
-			}
+				if(FALLNOBUTTON) //If 'hard' mode is enabled
+				{
+					otherKey(); //Force a fake key press
+				}
+			},duration);
+			
 		}
 </script>
 </head>
@@ -130,10 +118,10 @@
 </div>
 </div>
 <div class="center">
-<button onclick = "FALLNOBUTTON=!FALLNOBUTTON;">
+<button onclick = "alert('Nope');">
 	Fall Automatically
 </button>
-<button onclick = "alert('The goal is to get to the top platform, complete 3 levels and you win! Use the arrow keys or WAD to move')">
+<button onclick = "alert('The goal is to get to the top platform. No end in Valentino's version! Use the arrow keys or WAD to move')">
 	Instructions
 </button>
 <button onclick = "alert('This is a game made for 1.1.7 made by Zachary Taylor and Garrett Smith. And thanks to our C.S.E. teacher for letting us do this in JavaScript, and this is the `Valentino` version, HARDER, but the obstacles are Mr. Harness!')">
