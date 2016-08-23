@@ -1,4 +1,4 @@
-var SIZE = 7; //The size of the array of boxes
+var SIZE = 9; //The size of the array of boxes
 var JUMP_HEIGHT = 2; //The height that the player can jump.
 var FALLNOBUTTON = true; //Whether 'hard' mode is enabled, IT NOW DEFAULTS TO TRUE.
 var HARDMODE = true; //Whether 'hard' mode is ever disabled
