@@ -158,4 +158,4 @@ var theInterval = window.setInterval(function()
 	{
 		otherKey(); //Force a fake key press
 	}
-},1); //Code for hard mode.
+},10); //Code for hard mode.
