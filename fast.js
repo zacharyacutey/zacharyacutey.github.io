@@ -40,7 +40,7 @@ function display() //Redisplays the screen, by turning the previous player posit
 	}
 	catch(e)
 	{
-		console.log("YOU WON! Thanks for playing!"); //If an error is thrown, the player must have won
+		console.log("YOU Cannot win, move on and fail!"); //If an error is thrown, the player must have won
 	}
 }
 function set_obstacle(x,y) //Sets the pixel to be a platform
