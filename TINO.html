@@ -102,13 +102,14 @@
 			direction = 0; //Reset direction
 			duration /= 2;
 			window.clearInterval(theInterval);
-			theInterval = window.setInterval(function()
+			var theInterval = window.setInterval(function()
 			{
-				if(FALLNOBUTTON) //If 'hard' mode is enabled
+			if(FALLNOBUTTON) //If 'hard' mode is enabled
 				{
 					otherKey(); //Force a fake key press
 				}
-			},duration);
+				document.getElementById("blink").color = document.getElementById("blink").color == "red" ? "blue" : "red"
+			},1000)
 			
 		}
 </script>
