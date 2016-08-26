@@ -159,4 +159,5 @@ var theInterval = window.setInterval(function()
 	{
 		otherKey(); //Force a fake key press
 	}
+	document.getElementById("blink").color = document.getElementById("blink").color == "red" ? "blue" : "red"
 },1000); //Code for hard mode.
