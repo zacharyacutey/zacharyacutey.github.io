@@ -2,7 +2,7 @@ var canvas = document.createElement("canvas"),
     c = canvas.getContext("2d"),
     particles = {},
     particleIndex = 0,
-    particleNum = 1;
+    particleNum = 10;
     
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
