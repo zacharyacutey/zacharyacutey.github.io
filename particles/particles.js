@@ -68,4 +68,4 @@ setInterval(function(){
     for (var i in particles) {
         particles[i].draw();
     }
-}, 10);
+}, 1);
