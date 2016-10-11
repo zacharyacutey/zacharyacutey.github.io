@@ -53,17 +53,19 @@ Particle.prototype.draw = function() {
     c.fillRect(this.x,this.y,10,10);
 };
 
+var s = 0;
 setInterval(function(){
     c.globalCompositeOperation = "source-over";
     c.fillStyle = "rgba(0,0,0,0.2)";
     c.fillRect(0,0,canvas.width,canvas.height);
     
-    for (var i = 0; i < particleNum; i++) {
+    if(s== 0) for (var i = 0; i < particleNum; i++) {
         new Particle();
     }    
-    
+    s = s + 1;
+    s = s % 10;
     c.globalCompositeOperation = "lighter";
     for (var i in particles) {
         particles[i].draw();
     }
-}, 1000);
+}, 10);
