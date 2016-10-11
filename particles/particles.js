@@ -2,7 +2,7 @@ var canvas = document.createElement("canvas"),
     c = canvas.getContext("2d"),
     particles = {},
     particleIndex = 0,
-    particleNum = 10;
+    particleNum = 100;
     
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -28,7 +28,7 @@ function Particle() {
     this.id = particleIndex;
     
     this.life = 0;
-    this.maxLife = Math.random() * 100 + 10;
+    this.maxLife = Math.floor(Math.random() * 100 + 10);
     
     this.color = "hsla(" + parseInt(Math.random()*360, 10) + ",100%,50%,"+Math.random()+")";
 }
@@ -66,4 +66,4 @@ setInterval(function(){
     for (var i in particles) {
         particles[i].draw();
     }
-}, 30);
+}, 1000);
