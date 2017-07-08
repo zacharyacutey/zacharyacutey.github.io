@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Title</title>
+</head>
+<body>
+<canvas id="c">
+<script>
+var obj = { };
+var c = document.getElementById("c").getContext("2d");
+document.getElementById("c").width = innerWidth
+document.getElementById("c").height = innerHeight;
+var g = -9.8;
+var vx = 50;
+var vy = 100;
+var x = 0;
+var y = 0;
+var t = 0;
+
+function xPosition() { return vx*t + x }
+function yPosition() { return 1/2*g*t*t + vy*t + y }
+function xVelocity() { return vx }
+function yVelocity() { return g*t + vy }
+
+function circle(x,y,r) {
+	c.beginPath();
+	c.arc(x,innerHeight-y,r,0,2*Math.PI,false);
+	c.strokeStyle='black';
+	c.fillStyle='black';
+	c.stroke();
+	c.fill();
+}
+function updateStuff() {
+	if(!(0 <= xPosition() && xPosition() <= innerWidth)) { x = xPosition(); y = yPosition(); vx = -xVelocity(); vy = yVelocity(); t = 0;}
+	if(!(0 <= yPosition() && yPosition() <= innerHeight)) { x = xPosition(); y = yPosition(); vx = xVelocity(); vy = -yVelocity() * 0.89; t = 0;}
+
+}
+
+function animate() {
+	requestAnimationFrame(animate);
+	//c.clearRect(0,0,innerWidth,innerHeight)
+	circle(xPosition(),yPosition(),1);
+	t += 0.03;
+	updateStuff();
+}
+animate();
+</script>
+</body>
+</html>
