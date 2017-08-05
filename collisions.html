@@ -39,7 +39,7 @@ function circle(x,y,r) {
 function updateStuff() {
 	if(!(0 <= xPosition() && xPosition() <= innerWidth)) { x = xPosition(); y = yPosition(); vx = -xVelocity(); vy = yVelocity(); t = 0;}
 	if(!(0 <= yPosition() && yPosition() <= innerHeight)) { x = xPosition(); y = yPosition(); vx = xVelocity(); vy = -yVelocity() * 0.89; t = 0;}
-	if(300 <= xPosition() && xPosition() <= 400 && 300 <= yPosition() && yPosition() <= 400) { tvx = xVelocity(); tvy = yVelocity; tx = x; ty = y; x = 0; y = 0; vx = tvx; vy = tvy; t = 0; }
+	if(300 <= xPosition() && xPosition() <= 400 && 300 <= yPosition() && yPosition() <= 400) { tvx = xVelocity(); tvy = yVelocity(); tx = x; ty = y; x = 0; y = 0; vx = tvx; vy = tvy; t = 0; }
 }
 
 function init() {
