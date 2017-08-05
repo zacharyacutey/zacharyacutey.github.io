@@ -7,7 +7,7 @@
 <script>
 var obj = { };
 var c = document.getElementById("c").getContext("2d");
-document.getElementById("c").width = innerWidth
+document.getElementById("c").width = innerWidth;
 document.getElementById("c").height = innerHeight;
 var g = -9.8;
 var vx = 50;
@@ -20,6 +20,8 @@ var tx = 0;
 var ty = 0;
 var tvx = 0;
 var tvy = 0;
+
+var radius = 1;
 
 function xPosition() { return vx*t + x }
 function yPosition() { return 1/2*g*t*t + vy*t + y }
@@ -37,18 +39,26 @@ function circle(x,y,r) {
 function updateStuff() {
 	if(!(0 <= xPosition() && xPosition() <= innerWidth)) { x = xPosition(); y = yPosition(); vx = -xVelocity(); vy = yVelocity(); t = 0;}
 	if(!(0 <= yPosition() && yPosition() <= innerHeight)) { x = xPosition(); y = yPosition(); vx = xVelocity(); vy = -yVelocity() * 0.89; t = 0;}
+}
 
+function init() {
+	c.beginPath();
+	c.drawRect(100,100,100,100);
+	c.fillStyle = "#f00";
+	c.fill();
+	c.endPath();
 }
 
 function animate() {
 	requestAnimationFrame(animate);
 	//c.clearRect(0,0,innerWidth,innerHeight)
-	circle(xPosition(),yPosition(),1);
+	circle(xPosition(),yPosition(),radius);
 	t += 0.03;
 	updateStuff();
 }
 document.getElementById("c").onmousedown = function(e) { tx = e.clientX; ty = innerHeight - e.clientY; }
 document.getElementById("c").onmouseup = function(e) { tvx = e.clientX - tx; tvy = innerHeight - e.clientY - ty; x = tx; y = ty; vx = tvx; vy = tvy; t = 0; }
+init();
 animate();
 </script>
 </body>
