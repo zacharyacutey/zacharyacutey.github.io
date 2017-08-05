@@ -3,7 +3,7 @@
 <title>Title</title>
 </head>
 <body>
-<canvas id="c">
+<canvas id="c"></canvas>
 <script>
 var obj = { };
 var c = document.getElementById("c").getContext("2d");
@@ -43,7 +43,7 @@ function updateStuff() {
 
 function init() {
 	c.beginPath();
-	c.drawRect(100,100,100,100);
+	c.rect(100,100,100,100);
 	c.fillStyle = "#f00";
 	c.fill();
 	c.endPath();
