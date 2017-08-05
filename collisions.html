@@ -39,12 +39,12 @@ function circle(x,y,r) {
 function updateStuff() {
 	if(!(0 <= xPosition() && xPosition() <= innerWidth)) { x = xPosition(); y = yPosition(); vx = -xVelocity(); vy = yVelocity(); t = 0;}
 	if(!(0 <= yPosition() && yPosition() <= innerHeight)) { x = xPosition(); y = yPosition(); vx = xVelocity(); vy = -yVelocity() * 0.89; t = 0;}
-	if(300 <= xPosition() && xPosition() <= 400 && 200 <= yPosition() && yPosition() <= 300) { tvx = xVelocity(); tvy = yVelocity(); tx = x; ty = y; x = 0; y = 0; vx = tvx; vy = tvy; t = 0; }
+	if(300 <= xPosition() && xPosition() <= 600 && 300 <= yPosition() && yPosition() <= 600) { tvx = xVelocity(); tvy = yVelocity(); tx = x; ty = y; x = 0; y = 0; vx = tvx; vy = tvy; t = 0; }
 }
 
 function init() {
 	c.beginPath();
-	c.rect(300,innerHeight-300,100,100);
+	c.rect(300,innerHeight-600,300,300);
 	c.fillStyle = "#f00";
 	c.fill();
 	c.closePath();
