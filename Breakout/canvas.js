@@ -23,7 +23,7 @@ function randomHex() {
     return "0123456789ABCDEF"[Math.floor(Math.random()*16)];
 }
 function randomColor() {
-    return "#"+randomLetter()+randomLetter()+randomLetter()+randomLetter()+randomLetter()+randomLetter();
+    return "#"+randomHex()+randomHex()+randomHex()+randomHex()+randomHex()+randomHex();
 }
 
 function keyDownHandler(e) {
