@@ -13,11 +13,13 @@ function collision(obj) {
         if(bt < y + dy && y + dy < bb) {
             if(bl < right && right < br || bl < left && left < br) {
                 dx = -dx;
+                color = obj.color;
                 obj.status = 0;
             }
         } else if(bl < x + dx && x + dx < br) {
             if(bt < top && top < bb || bt < bottom && bottom < bb) {
                 dy = -dy;
+                color = obj.color;
                 obj.status = 0;
             }
         }
