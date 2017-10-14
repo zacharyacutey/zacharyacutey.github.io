@@ -14,9 +14,17 @@ var paddleWidth = 100;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
+var color = "#FF0000";
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+function randomHex() {
+    return "0123456789ABCDEF"[Math.floor(Math.random()*16)];
+}
+function randomColor() {
+    return "#"+randomLetter()+randomLetter()+randomLetter()+randomLetter()+randomLetter()+randomLetter();
+}
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
