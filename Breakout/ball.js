@@ -10,7 +10,7 @@ function drawBall() {
     ctx.beginPath();
     ctx.moveTo(x,y);
     ctx.strokeStyle = "#000000";
-    ctx.lineTo(x+dx*10,y+dx*10);
+    ctx.lineTo(x+dx*10,y-dx*10);
     ctx.stroke();
     ctx.closePath();
 }
