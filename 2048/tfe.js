@@ -3,7 +3,14 @@
 var SIZE = 4;
 
 //HELPER FUNCTIONS
-
+function boardEquality(A,B) { // assumes the arrays are the same shape
+	for(var i = 0; i < A.length; i++) {
+		for(var j = 0; j < A[0].length; j++) {
+			if(A[i][j] != B[i][j]) return false;
+		}
+	}
+	return true;
+}
 function merge(list) {
 	var temp = [];
 	for(var i = 0;i < list.length;i++) //Remove all zeros
@@ -90,7 +97,10 @@ function insertNumber(array) { //Modifies the array
 }
 
 function gameOver(array) {
-	return mergeLeft(array) == array && mergeRight(array) == array && array == mergeUp(array) && mergeDown(array) == array;
+	return boardEquality(mergeLeft(array),array) && \
+		boardEquality(mergeUp(array),array) && \
+		boardEquality(mergeDown(array),array) && \
+		boardEquality(mergeRight(array),array);
 }
 
 function generateArray() {
@@ -101,18 +111,17 @@ function generateArray() {
 }
 
 
-// ------------- BEGIN (TEMPORARY) UI STUFFS ---------------
+// ------------- (TEMPORARY) UI STUFFS ---------------
 function temporaryGame() {
 	var board = generateArray();
 	while(!gameOver(board)) {
 		var fix = true; //A fix to see if something will work.
 		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n'));
-		if((choice == 'a' || choice == 'A') && mergeLeft(board)!=board) board = mergeLeft(board);
-		else if((choice == 'w' || choice == 'W') && mergeUp(board)!=board) board = mergeUp(board);
-		else if((choice == 's' || choice == 'S') && mergeDown(board)!=board) board = mergeDown(board);
-		else if((choice == 'd' || choice == 'd') && mergeRight(board)!=board) board = mergeRight(board);
+		if((choice == 'a' || choice == 'A') && !boardEquality(mergeLeft(board),board)) board = mergeLeft(board);
+		else if((choice == 'w' || choice == 'W') && !boardEquality(mergeUp(board),board)) board = mergeUp(board);
+		else if((choice == 's' || choice == 'S') && !boardEquality(mergeDown(board),board)) board = mergeDown(board);
+		else if((choice == 'd' || choice == 'd') && !boardEquality(mergeRight(board),board)) board = mergeRight(board);
 		else if(choice == 'q' || choice == 'Q') break;
-		else fix = false; //continue
-		if(fix) insertNumber(board);
+		insertNumber(board);
 	}
 }
