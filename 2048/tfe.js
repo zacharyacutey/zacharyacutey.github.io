@@ -97,10 +97,7 @@ function insertNumber(array) { //Modifies the array
 }
 
 function gameOver(array) {
-	return boardEquality(mergeLeft(array),array) && \
-		boardEquality(mergeUp(array),array) && \
-		boardEquality(mergeDown(array),array) && \
-		boardEquality(mergeRight(array),array);
+	return boardEquality(mergeLeft(array),array) && boardEquality(mergeUp(array),array) && boardEquality(mergeDown(array),array) && boardEquality(mergeRight(array),array);
 }
 
 function generateArray() {
