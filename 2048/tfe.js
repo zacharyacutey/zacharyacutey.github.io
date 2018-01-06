@@ -115,8 +115,7 @@ function generateArray() {
 function temporaryGame() {
 	var board = generateArray();
 	while(!gameOver(board)) {
-		var fix = true; //A fix to see if something will work.
-		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n'));
+		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n')); //Tabs won't render in Chrome
 		if((choice == 'a' || choice == 'A') && !boardEquality(mergeLeft(board),board)) board = mergeLeft(board);
 		else if((choice == 'w' || choice == 'W') && !boardEquality(mergeUp(board),board)) board = mergeUp(board);
 		else if((choice == 's' || choice == 'S') && !boardEquality(mergeDown(board),board)) board = mergeDown(board);
