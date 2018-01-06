@@ -118,6 +118,7 @@ function temporaryGame() {
 		else if((choice == 's' || choice == 'S') && !boardEquality(mergeDown(board),board)) board = mergeDown(board);
 		else if((choice == 'd' || choice == 'd') && !boardEquality(mergeRight(board),board)) board = mergeRight(board);
 		else if(choice == 'q' || choice == 'Q') break;
+		else continue;
 		insertNumber(board);
 	}
 }
