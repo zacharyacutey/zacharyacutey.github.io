@@ -72,12 +72,12 @@ function mergeDown(array) {
 
 function randomElement(list) {
 	//this is a temporary fix.
-	console.log("LIST: "+list);
-	console.log("LENGTH: "+list.length);
+	//console.log("LIST: "+list);
+	//console.log("LENGTH: "+list.length);
 	var index = list.length + 1;
 	while(list[index] === undefined) {
 		index = Math.floor(Math.random()*(list.length + 1));
-		console.log("INDEX: "+index);
+		//console.log("INDEX: "+index);
 	}
 	return list[index];
 }
