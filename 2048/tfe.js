@@ -105,13 +105,14 @@ function generateArray() {
 function temporaryGame() {
 	var board = generateArray();
 	while(!gameOver(board)) {
+		var fix = true; //A fix to see if something will work.
 		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n'));
 		if((choice == 'a' || choice == 'A') && mergeLeft(board)!=board) board = mergeLeft(board);
 		else if((choice == 'w' || choice == 'W') && mergeUp(board)!=board) board = mergeUp(board);
 		else if((choice == 's' || choice == 'S') && mergeDown(board)!=board) board = mergeDown(board);
 		else if((choice == 'd' || choice == 'd') && mergeRight(board)!=board) board = mergeRight(board);
 		else if(choice == 'q' || choice == 'Q') break;
-		else continue;
-		insertNumber(board);
+		else fix = false; g//continue
+		if(fix) insertNumber(board);
 	}
 }
