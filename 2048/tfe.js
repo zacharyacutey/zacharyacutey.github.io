@@ -112,7 +112,7 @@ function temporaryGame() {
 		else if((choice == 's' || choice == 'S') && mergeDown(board)!=board) board = mergeDown(board);
 		else if((choice == 'd' || choice == 'd') && mergeRight(board)!=board) board = mergeRight(board);
 		else if(choice == 'q' || choice == 'Q') break;
-		else fix = false; g//continue
+		else fix = false; //continue
 		if(fix) insertNumber(board);
 	}
 }
