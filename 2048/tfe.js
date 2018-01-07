@@ -121,7 +121,7 @@ function drawBoard(board) { //Table based UI
 	for(var i = 0; i < SIZE; i++) {
 		res += "<tr>";
 		for(var j = 0; j < SIZE; j++) {
-			res += "<td>"+board[i][j]==0?'':board[i][j]+"</td>";
+			res += "<td>"+(board[i][j]==0?'':board[i][j])+"</td>";
 		}
 		res += "</tr>";
 	}
