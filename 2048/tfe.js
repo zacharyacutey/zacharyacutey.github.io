@@ -109,9 +109,32 @@ function generateArray() {
 
 
 // ------------- (TEMPORARY) UI STUFFS ---------------
-function temporaryGame() {
+
+/*
+UI = 0: text based
+UI = 1: current style of UI (text based with board in background)
+*/
+var UI = 1;
+
+function drawBoard(board) { //Table based UI
+	var res = "<table>";
+	for(var i = 0; i < SIZE; i++) {
+		res += "<tr>";
+		for(var j = 0; j < SIZE; j++) {
+			res += "<td>"+board[i][j]+"</td>";
+		}
+		res += "</tr>";
+	}
+	res += "</table>";
+	document.getElementById("draw").innerHTML = res;
+}
+
+			
+
+function temporaryGame() { //Text based game
 	var board = generateArray();
 	while(!gameOver(board)) {
+		if(UI == 1) drawBoard(board);
 		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n')); //Tabs won't render in Chrome
 		if((choice == 'a' || choice == 'A') && !boardEquality(mergeLeft(board),board)) board = mergeLeft(board);
 		else if((choice == 'w' || choice == 'W') && !boardEquality(mergeUp(board),board)) board = mergeUp(board);
