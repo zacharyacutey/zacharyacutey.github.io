@@ -129,17 +129,22 @@ function drawBoard(board) { //Table based UI
 	document.getElementById("draw").innerHTML = res;
 }
 
-			
+var key = 'o';
+window.onkeypress = function(e) {
+	key = e.key;
+}
+		
 
 function temporaryGame() { //Text based game
 	var board = generateArray();
 	while(!gameOver(board)) {
 		if(UI == 1) drawBoard(board);
-		var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n')); //Tabs won't render in Chrome
-		if((choice == 'a' || choice == 'A') && !boardEquality(mergeLeft(board),board)) board = mergeLeft(board);
-		else if((choice == 'w' || choice == 'W') && !boardEquality(mergeUp(board),board)) board = mergeUp(board);
-		else if((choice == 's' || choice == 'S') && !boardEquality(mergeDown(board),board)) board = mergeDown(board);
-		else if((choice == 'd' || choice == 'd') && !boardEquality(mergeRight(board),board)) board = mergeRight(board);
+		//var choice = prompt(board.map(function(n){return n.join('\t');}).join('\n')); //Tabs won't render in Chrome
+		var choice = key;
+		if((choice == 'a' || choice == 'A') && !boardEquality(mergeLeft(board),board)) {board = mergeLeft(board);key='o';}
+		else if((choice == 'w' || choice == 'W') && !boardEquality(mergeUp(board),board)) {board = mergeUp(board);key='o';}
+		else if((choice == 's' || choice == 'S') && !boardEquality(mergeDown(board),board)) {board = mergeDown(board);key='o';}
+		else if((choice == 'd' || choice == 'd') && !boardEquality(mergeRight(board),board)) {board = mergeRight(board);key='o';}
 		else if(choice == 'q' || choice == 'Q') break;
 		else continue;
 		insertNumber(board);
