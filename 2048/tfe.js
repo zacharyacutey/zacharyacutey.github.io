@@ -1,3 +1,7 @@
+/*
+TODO: make it so it doesn't break my computer
+*/
+
 //CONSTANTS
 
 var SIZE = 4;
